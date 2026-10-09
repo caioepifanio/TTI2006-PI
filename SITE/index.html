@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hospital Ortopédico AACD — Acesso</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Lato:wght@400;700;900&family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- =====================================================
+       CABEÇALHO DO SISTEMA (aparece depois do login)
+       O menu é montado pelo script.js conforme o tipo de usuário
+       ===================================================== -->
+  <header class="app-header" id="app-header" hidden>
+    <a class="app-logo" href="#" id="app-logo">
+      <span>Hospital<br>Ortopédico</span><i>AACD</i>
+    </a>
+
+    <nav class="app-nav" id="app-nav"></nav>
+
+    <div class="usuario">
+      <button type="button" class="usuario-btn" id="usuario-btn" aria-haspopup="true" aria-expanded="false">
+        <span class="avatar" id="avatar">U</span>
+        <span class="usuario-info">
+          <b id="usuario-nome">user</b>
+          <small id="usuario-papel">Voluntário</small>
+        </span>
+        <span class="seta">▼</span>
+      </button>
+      <div class="dropdown dropdown-direita">
+        <a href="#pagina-perfil">Meu perfil</a>
+        <a href="#inicio" id="sair">Sair</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- ============ TELA 1: SELEÇÃO DE LOGIN ============ -->
+  <section class="screen screen-inicio" id="inicio">
+    <div class="card card-teal card-selecao">
+      <h1 class="titulo-selecao">Selecione o tipo de Login</h1>
+
+      <a href="#login-funcionario" class="btn-opcao">
+        <span class="opcao-icone">
+          <!-- Troque por: <img src="img/logo-aacd.png" alt="AACD"> -->
+          <span class="badge-aacd">AACD</span>
+        </span>
+        <span class="opcao-texto">Funcionario AACD</span>
+      </a>
+
+      <a href="#login-voluntario" class="btn-opcao">
+        <span class="opcao-icone">
+          <svg viewBox="0 0 40 40" width="32" height="32" aria-hidden="true">
+            <path d="M20 33 C10 26 5 20 5 13.5 A7.5 7.5 0 0 1 20 10 A7.5 7.5 0 0 1 35 13.5 C35 20 30 26 20 33Z"
+                  fill="none" stroke="#333" stroke-width="2"/>
+            <path d="M14 30 v-9 a2 2 0 0 1 4 0 v4 M18 24 v-6 a2 2 0 0 1 4 0 v7 M22 22 v-3 a2 2 0 0 1 4 0 v11"
+                  fill="none" stroke="#333" stroke-width="1.8" stroke-linecap="round"/>
+          </svg>
+        </span>
+        <span class="opcao-texto">Voluntário</span>
+      </a>
+
+      <a href="https://aacd.org.br" target="_blank" rel="noopener" class="link-azul">Conhecer a AACD</a>
+
+      <div class="marca marca-card">
+        <span>Hospital<br>Ortopédico</span><i>AACD</i>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ TELA 2: LOGIN FUNCIONÁRIO ============ -->
+  <section class="screen screen-teal" id="login-funcionario">
+    <div class="forma forma-funcionario"></div>
+
+    <form class="card card-red card-login" id="form-funcionario" novalidate>
+      <label for="func-email">Login</label>
+      <input type="email" id="func-email" placeholder="[email AACD]" autocomplete="username" required>
+
+      <label for="func-senha">Senha</label>
+      <input type="password" id="func-senha" placeholder="Digite sua senha:" autocomplete="current-password" required>
+
+      <a href="#esqueci-senha" class="link-branco link-simples">Esqueci a senha</a>
+
+      <p class="mensagem" aria-live="polite"></p>
+      <button type="submit" class="btn-branco">Entrar</button>
+      <a href="#inicio" class="link-azul">Voltar para tela inicial</a>
+    </form>
+
+    <div class="marca"><span>Hospital<br>Ortopédico</span><i>AACD</i></div>
+  </section>
+
+  <!-- ============ TELA 3: LOGIN VOLUNTÁRIO ============ -->
+  <section class="screen screen-teal screen-claro" id="login-voluntario">
+    <div class="forma forma-voluntario"></div>
+
+    <form class="card card-red card-listrado card-login fonte-nunito" id="form-voluntario" novalidate>
+      <label for="vol-email">Login</label>
+      <input type="email" id="vol-email" placeholder="xxxxxx@gmail.com" autocomplete="username" required>
+      <a href="#cadastro" class="link-branco">Não tem conta? Cadastre-se</a>
+
+      <label for="vol-senha">Senha</label>
+      <input type="password" id="vol-senha" placeholder="Digite sua senha:" autocomplete="current-password" required>
+      <a href="#esqueci-senha" class="link-branco">Esqueci minha senha</a>
+
+      <p class="mensagem" aria-live="polite"></p>
+      <button type="submit" class="btn-branco">Entrar</button>
+      <a href="#inicio" class="link-azul">Voltar para tela inicial</a>
+    </form>
+
+    <div class="marca"><span>Hospital<br>Ortopédico</span><i>AACD</i></div>
+  </section>
+
+  <!-- ============ TELA 4: CADASTRO DE VOLUNTÁRIO ============ -->
+  <section class="screen screen-teal" id="cadastro">
+    <div class="forma forma-cadastro"></div>
+
+    <form class="card card-red card-cadastro" id="form-cadastro" novalidate>
+      <input type="text" id="cad-nome" class="campo-nome" placeholder="Nome do voluntário:" required>
+
+      <div class="grade">
+        <input type="email" id="cad-email" placeholder="Email:" required>
+        <input type="text" id="cad-cnpj" placeholder="CNPJ: AA.AAA.AAA/AAAA-DV" inputmode="numeric" maxlength="18" required>
+        <input type="text" id="cad-endereco" placeholder="Endereço" required>
+        <input type="tel" id="cad-telefone" placeholder="Telefone: (XX) XXXXX-XXXX" maxlength="15" required>
+        <input type="password" id="cad-senha" placeholder="Senha" autocomplete="new-password" required>
+        <input type="password" id="cad-confirma" placeholder="Confirmar Senha:" autocomplete="new-password" required>
+      </div>
+
+      <p class="mensagem" aria-live="polite"></p>
+      <button type="submit" class="btn-branco btn-quadrado">Cadastrar</button>
+      <a href="#login-voluntario" class="link-azul">Voltar para tela anterior</a>
+    </form>
+
+    <div class="marca"><span>Hospital<br>Ortopédico</span><i>AACD</i></div>
+  </section>
+
+  <!-- ============ TELA 5: ESQUECI A SENHA ============ -->
+  <section class="screen screen-teal" id="esqueci-senha">
+    <div class="forma forma-esqueci"></div>
+
+    <form class="card card-red card-esqueci" id="form-esqueci" novalidate>
+      <label for="rec-email">Coloque seu email:</label>
+      <input type="email" id="rec-email" placeholder="xxxxxx@gmail.com" required>
+      <button type="button" class="btn-mini" id="btn-reenviar">Reenviar Código</button>
+
+      <p class="texto-info">Enviaremos um código para seu email,<br>coloque e irá poder trocar a senha</p>
+
+      <p class="mensagem" aria-live="polite"></p>
+      <button type="submit" class="btn-branco btn-quadrado">Enviar</button>
+      <a href="#" class="link-azul" id="voltar-anterior">Voltar para tela anterior</a>
+    </form>
+
+    <div class="marca marca-grande"><span>Hospital<br>Ortopédico</span><i>AACD</i></div>
+  </section>
+
+  <!-- ============ TELA 6: TROCAR SENHA ============ -->
+  <section class="screen screen-teal" id="trocar-senha">
+    <div class="forma forma-trocar"></div>
+
+    <form class="card card-red card-trocar" id="form-trocar" novalidate>
+      <label for="nova-senha">Senha</label>
+      <input type="password" id="nova-senha" placeholder="Digite sua senha:" autocomplete="new-password" required>
+
+      <label for="nova-confirma">Confirmar Senha</label>
+      <input type="password" id="nova-confirma" placeholder="Confirme sua senha:" autocomplete="new-password" required>
+
+      <p class="mensagem" aria-live="polite"></p>
+      <button type="submit" class="btn-branco btn-quadrado">Trocar senha</button>
+      <a href="#inicio" class="link-azul">Voltar para tela inicial</a>
+    </form>
+
+    <div class="marca marca-grande"><span>Hospital<br>Ortopédico</span><i>AACD</i></div>
+  </section>
+
+  <!-- ============ TELA 7: INÍCIO DO VOLUNTÁRIO ============ -->
+  <section class="screen app-screen" id="home-voluntario" data-papel="voluntario">
+    <div class="arco" aria-hidden="true"></div>
+    <div class="app-conteudo boas-vindas">
+      <h1>BEM VINDO!</h1>
+      <p>Olá, <span data-nome>user</span>. Use o menu acima para ver pedidos, impressoras e produção.</p>
+    </div>
+  </section>
+
+  <!-- ============ TELA 8: INÍCIO DO FUNCIONÁRIO ============ -->
+  <section class="screen app-screen" id="home-funcionario" data-papel="funcionario">
+    <div class="app-conteudo boas-vindas">
+      <h1>BEM VINDO!</h1>
+      <p>Olá, <span data-nome>user</span>. Use o menu acima para gerenciar demandas, voluntários e próteses.</p>
+    </div>
+  </section>
+
+  <!-- ============ TELA 9: EM PRODUÇÃO ============ -->
+  <section class="screen app-screen" id="em-producao" data-papel="voluntario">
+    <div class="arco" aria-hidden="true"></div>
+    <div class="app-conteudo">
+      <h1 class="titulo-secao">EM PRODUÇÃO</h1>
+
+      <div class="painel">
+        <div class="painel-topo">
+          <div>
+            <h2>Pacientes</h2>
+            <p id="prod-resumo"></p>
+          </div>
+          <input type="search" id="prod-busca" class="busca" placeholder="Buscar paciente ou prótese..." aria-label="Buscar paciente ou prótese">
+        </div>
+
+        <div class="tabela" role="table" aria-label="Pacientes em produção">
+          <div class="tabela-cabecalho" role="row">
+            <span>Paciente</span><span>Prótese</span><span>Prazo de entrega</span><span>Situação</span>
+          </div>
+          <div id="prod-lista"></div>
+        </div>
+      </div>
+
+      <a href="#home-voluntario" class="btn-voltar-app">← Voltar à tela principal</a>
+    </div>
+  </section>
+
+  <!-- ============ TELA 10: CADASTRAR IMPRESSORA ============ -->
+  <section class="screen app-screen" id="cadastrar-impressora" data-papel="voluntario">
+    <div class="arco" aria-hidden="true"></div>
+    <div class="app-conteudo">
+      <h1 class="titulo-pagina">Cadastrar Impressora</h1>
+
+      <ol class="etapas" id="etapas">
+        <li class="ativa">Identificação</li>
+        <li>Especificações</li>
+        <li>Filamento</li>
+        <li>Revisão</li>
+      </ol>
+
+      <form class="painel-teal" id="form-impressora" novalidate>
+        <!-- Etapa 1 -->
+        <fieldset class="etapa">
+          <legend>Identificação</legend>
+          <div class="grade-app">
+            <div class="campo">
+              <input name="nome" placeholder="Nome da Impressora:" required data-erro="Informe o nome da impressora.">
+              <small class="erro-campo"></small>
+            </div>
+            <div class="campo">
+              <input name="modelo" placeholder="Modelo da Impressora: RTX90" required data-erro="Informe o modelo da impressora.">
+              <small class="erro-campo"></small>
+            </div>
+            <div class="campo">
+              <input name="marca" placeholder="Marca da Impressora:" required data-erro="Informe a marca da impressora.">
+              <small class="erro-campo"></small>
+            </div>
+            <div class="campo">
+              <input name="local" placeholder="Localização Impressora" required data-erro="Informe onde a impressora está.">
+              <small class="erro-campo"></small>
+            </div>
+          </div>
+        </fieldset>
+
+        <!-- Etapa 2 -->
+        <fieldset class="etapa" hidden>
+          <legend>Especificações</legend>
+          <div class="grade-app">
+            <div class="campo">
+              <select name="tecnologia" required data-erro="Escolha a tecnologia de impressão.">
+                <option value="">Tecnologia de impressão:</option>
+                <option>FDM (filamento)</option>
+                <option>SLA (resina)</option>
+                <option>SLS (pó)</option>
+              </select>
+              <small class="erro-campo"></small>
+            </div>
+            <div class="campo">
+              <input name="area" placeholder="Área de impressão (mm): 220 x 220 x 250" required data-erro="Informe a área de impressão.">
+              <small class="erro-campo"></small>
+            </div>
+            <div class="campo">
+              <select name="bico" required data-erro="Escolha o diâmetro do bico.">
+                <option value="">Diâmetro do bico:</option>
+                <option>0,2 mm</option>
+                <option>0,4 mm</option>
+                <option>0,6 mm</option>
+                <option>0,8 mm</option>
+              </select>
+              <small class="erro-campo"></small>
+            </div>
+            <div class="campo">
+              <input name="velocidade" type="number" min="1" placeholder="Velocidade máxima (mm/s):" required data-erro="Informe a velocidade máxima.">
+              <small class="erro-campo"></small>
+            </div>
+          </div>
+        </fieldset>
+
+        <!-- Etapa 3 -->
+        <fieldset class="etapa" hidden>
+          <legend>Filamento</legend>
+          <div class="grade-app">
+            <div class="campo">
+              <select name="filamento" required data-erro="Escolha o tipo de filamento.">
+                <option value="">Tipo de filamento:</option>
+                <option>PLA</option>
+                <option>PETG</option>
+                <option>ABS</option>
+                <option>TPU (flexível)</option>
+                <option>Nylon</option>
+              </select>
+              <small class="erro-campo"></small>
+            </div>
+            <div class="campo">
+              <select name="diametro" required data-erro="Escolha o diâmetro do filamento.">
+                <option value="">Diâmetro do filamento:</option>
+                <option>1,75 mm</option>
+                <option>2,85 mm</option>
+              </select>
+              <small class="erro-campo"></small>
+            </div>
+            <div class="campo">
+              <input name="cor" placeholder="Cor do filamento: Branco">
+              <small class="erro-campo"></small>
+            </div>
+            <div class="campo">
+              <input name="estoque" type="number" min="0" step="0.1" placeholder="Estoque (kg):" required data-erro="Informe quanto filamento há em estoque.">
+              <small class="erro-campo"></small>
+            </div>
+          </div>
+        </fieldset>
+
+        <!-- Etapa 4 -->
+        <fieldset class="etapa" hidden>
+          <legend>Revisão</legend>
+          <div class="revisao" id="imp-revisao"></div>
+        </fieldset>
+
+        <p class="mensagem-app" aria-live="polite"></p>
+
+        <div class="acoes-etapa">
+          <button type="button" class="btn-etapa btn-etapa-sec" id="imp-voltar" hidden>← Voltar</button>
+          <button type="submit" class="btn-etapa" id="imp-proximo">Próximo →</button>
+        </div>
+      </form>
+    </div>
+  </section>
+
+  <!-- ============ PÁGINAS DO MENU AINDA SEM TELA PRÓPRIA ============ -->
+  <section class="screen app-screen" id="pagina">
+    <div class="arco" aria-hidden="true"></div>
+    <div class="app-conteudo">
+      <h1 class="titulo-pagina" id="pagina-titulo"></h1>
+      <div class="pagina-corpo" id="pagina-corpo"></div>
+      <a href="#" class="btn-voltar-app" data-home>← Voltar à tela principal</a>
+    </div>
+  </section>
+
+  <script src="script.js"></script>
+</body>
+</html>
